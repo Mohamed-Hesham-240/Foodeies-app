@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/drawable/roundedbutton.xml" value="0.1505" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/register_activity.xml" value="0.1875" />
+
         <entry key="..\:/Users/dell/Desktop/goodies/Foodeies-app/app/src/main/res/layout/food_list_item.xml" value="0.21693840579710144" />
         <entry key="..\:/Users/dell/Desktop/goodies/Foodeies-app/app/src/main/res/layout/fragment_food_list.xml" value="0.21693840579710144" />
         <entry key="..\:/Users/dell/Desktop/goodies/Foodeies-app/app/src/main/res/layout/fragment_item_adder.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/dell/Desktop/goodies/Foodeies-app/app/src/main/res/layout/fragment_item_description.xml" value="0.21693840579710144" />
         <entry key="..\:/Users/dell/Desktop/goodies/Foodeies-app/app/src/main/res/layout/fragment_splash.xml" value="0.21693840579710144" />
+
       </map>
     </option>
   </component>
