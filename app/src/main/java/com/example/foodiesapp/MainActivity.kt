@@ -5,10 +5,13 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
+import com.example.foodiesapp.cart.Cart
+import com.example.foodiesapp.login.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
 
