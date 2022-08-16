@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/drawable/roundedbutton.xml" value="0.1505" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_cart.xml" value="0.1" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_cart_item.xml" value="0.1875" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/food_list_item.xml" value="0.1875" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/fragment_food_list.xml" value="0.1875" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/fragment_item_adder.xml" value="0.18766999093381687" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/fragment_item_description.xml" value="0.1875" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/fragment_splash.xml" value="0.1875" />
+        <entry key="..\:/Digitory/Foodeies-app-main/app/src/main/res/layout/register_activity.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

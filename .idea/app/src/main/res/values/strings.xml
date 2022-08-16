@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Foodies app</string>
+    <string name="hint_password">Password</string>
+    <string name="login">login</string>
+    <string name="register">Register</string>
+    <string name="hint_email">enter your email</string>
+</resources>
