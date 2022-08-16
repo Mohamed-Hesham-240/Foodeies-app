@@ -18,8 +18,7 @@ class Cart : AppCompatActivity() {
 
 
        val cart= CartAdapter ()
-        var totalValue=0.0
-        Result.text="Total ${totalValue} $"
+        Result.text="Total ${cart.finaltotal} $"
         Log.d("###","totallllllll ${cart.finaltotal}")
 
     }
