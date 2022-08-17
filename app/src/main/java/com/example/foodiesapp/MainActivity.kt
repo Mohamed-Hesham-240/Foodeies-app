@@ -20,24 +20,29 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-    var email: EditText?=null
-    var pass: EditText?=null
+
+    lateinit var respCode: String
+    var email: EditText? = null
+    var pass: EditText? = null
+
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupActivityLink()
-        email= findViewById<EditText>(R.id.et_email)
-        pass= findViewById<EditText>(R.id.et_password)
+        email = findViewById<EditText>(R.id.et_email)
+        pass = findViewById<EditText>(R.id.et_password)
         val btnLogin = findViewById<Button>(R.id.btn_login)
         //go to cart activity
         btnLogin.setOnClickListener {
             makeRequest()
+            Log.d("##", respCode)
+            val intent = Intent(this, ProductsActivity::class.java)
+            startActivity(intent)
 
-                val intent = Intent(this, ProductsActivity::class.java)
-                startActivity(intent)
 
-
-        }}
+        }
+    }
 
     //go to register activity
     private fun setupActivityLink() {
@@ -45,33 +50,38 @@ class MainActivity : AppCompatActivity() {
         linkTextView.setOnClickListener {
             val switchActivityIntent = Intent(this, RegisterActivity::class.java)
             startActivity(switchActivityIntent)
-        }}
+        }
+    }
 
-     fun makeRequest()
-    {
+    fun makeRequest() {
 
         val api = Retrofit.Builder()
             .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(userInterface::class.java)
 
-        val requestModel = userRequset( email?.text.toString(),pass?.text.toString())
+        val requestModel = userRequset(email?.text.toString(), pass?.text.toString())
 
-        api.login( email?.text.toString(),pass?.text.toString())?.enqueue(
+        api.login(email?.text.toString(), pass?.text.toString())?.enqueue(
             object : Callback<responseLogin> {
                 override fun onResponse(
                     call: Call<responseLogin>,
                     response: Response<responseLogin>
                 ) {
-                    Log.d("##", "${response.body()?.access_token}")
-                    Log.d("##", "${response.code().toString()}")                }
+                    val respBody: String = response.body()?.access_token.toString()
+                    respCode = response.code().toString()
+                    Log.d("##", respBody)
+                    Log.d("##", respCode)
+
+                }
 
                 override fun onFailure(call: Call<responseLogin>, t: Throwable) {
-                    Toast.makeText(this@MainActivity,"can't login", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "can't login", Toast.LENGTH_LONG).show()
                 }
 
             }
         )
 
 
-}}
+    }
+}
