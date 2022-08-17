@@ -1,6 +1,5 @@
 package com.example.foodiesapp
 
-import Product
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
