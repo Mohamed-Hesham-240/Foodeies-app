@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     var email: EditText? = null
     var pass: EditText? = null
 
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         //go to cart activity
         btnLogin.setOnClickListener {
             makeRequest()
-            Log.d("##", respCode)
             val intent = Intent(this, ProductsActivity::class.java)
             startActivity(intent)
 
@@ -82,6 +81,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-
+        Log.d("##", respCode)
     }
 }
