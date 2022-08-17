@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Foodies app</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">password</string>
     <string name="login">login</string>
+    <string name="quantity">quantity</string>
+    <string name="price">price</string>
+    <string name="name">name</string>
+    <string name="check_out">checkout</string>
     <string name="register">Register</string>
-    <string name="hint_email">enter your email</string>
+    <string name="user_name_hint">user name</string>
+    <string name="hint_email">email</string>
+    <string name="group_number">group 5</string>
+    <string name="created_by_string">Created By</string>
+    <string name="check_for_account">Do not have an account?</string>
 </resources>

@@ -8,7 +8,6 @@
     >
     <androidx.cardview.widget.CardView
         android:layout_width="250dp"
-        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="130dp"
@@ -29,7 +28,7 @@
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/name"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="quantity" />
+            android:text="@string/quantity" />
 
         <TextView
             android:id="@+id/name"
@@ -42,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/rounded"
-            android:text="name" />
+            android:text="@string/name" />
 
         <TextView
             android:id="@+id/price"
@@ -51,7 +50,7 @@
             android:layout_marginStart="180dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="price"
+            android:text="@string/price"
             android:textColor="@color/orange"
             android:textSize="20sp"
             android:fontFamily="@font/rounded"
@@ -79,8 +78,8 @@
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@color/orange"
         android:fontFamily="@font/rounded"
-        android:text="CheckOut"
-        android:textSize="20dp"
+        android:text="@string/check_out"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rv_cart" />
 
@@ -92,10 +91,10 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/btn_checkout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_checkout"
         android:fontFamily="@font/rounded"
-        android:text="total 200$"
+        android:text="Total: 200$"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
