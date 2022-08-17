@@ -1,21 +1,14 @@
 package com.example.foodiesapp
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.foodiesapp.cart.Cart
-import com.example.foodiesapp.login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.foodiesapp.login.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     var email: EditText?=null
@@ -34,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("f#","${code}")
             if (code=="200")
             {
-                val intent = Intent(this, Cart::class.java)
+                val intent = Intent(this, ProductsActivity::class.java)
                 startActivity(intent)
             }
             else  {
@@ -43,8 +36,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("f#","${code}")
             }
 
-        }
-    }
+
 
 
     //go to register activity
@@ -54,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             val switchActivityIntent = Intent(this, RegisterActivity::class.java)
             startActivity(switchActivityIntent)
         }
-    }
 
     private fun makeRequest()
     {
@@ -82,5 +73,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         )
+
     }
 }

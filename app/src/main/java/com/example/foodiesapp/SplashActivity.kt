@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class SplashActivity : AppCompatActivity() {
-    private val SPLASH_SCREEN_DELAY : Long = 2000
+    private val SPLASH_SCREEN_DELAY : Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

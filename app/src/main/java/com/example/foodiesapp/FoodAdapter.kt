@@ -9,9 +9,27 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FoodAdapter (private val foodList: ArrayList<Bitmap>)
     : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>(){
-        class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view){
-            val foodImageView : ImageView = view.findViewById(R.id.food_img_view)
-        }
+    class FoodViewHolder(view: View, listener: OnItemCLickListener) : RecyclerView.ViewHolder(view){
+        val foodImageView : ImageView = view.findViewById(R.id.food_img_view)
+
+            init{
+                view.setOnClickListener {
+                    listener.onItemCLick(adapterPosition)
+                }
+            }
+
+    }
+
+    private lateinit var mListener: OnItemCLickListener
+
+    interface OnItemCLickListener{
+        fun onItemCLick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemCLickListener){
+        mListener = listener
+    }
+
 
     override fun getItemCount(): Int {
         return foodList.size
@@ -25,7 +43,8 @@ class FoodAdapter (private val foodList: ArrayList<Bitmap>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.food_list_item, parent, false)
-        return FoodViewHolder(view)
+        return FoodViewHolder(view,mListener)
     }
+
 
 }
