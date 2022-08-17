@@ -7,13 +7,21 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.foodiesapp.cart.Cart
 import com.example.foodiesapp.login.RegisterActivity
+import com.example.foodiesapp.login.responseLogin
+import com.example.foodiesapp.login.userInterface
+import com.example.foodiesapp.login.userRequset
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     var email: EditText?=null
     var pass: EditText?=null
-    lateinit  var code :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,20 +32,12 @@ class MainActivity : AppCompatActivity() {
         //go to cart activity
         btnLogin.setOnClickListener {
             makeRequest()
-            Log.d("f#","${code}")
-            if (code=="200")
-            {
+
                 val intent = Intent(this, ProductsActivity::class.java)
                 startActivity(intent)
-            }
-            else  {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                Log.d("f#","${code}")
-            }
 
 
-
+        }}
 
     //go to register activity
     private fun setupActivityLink() {
@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
         linkTextView.setOnClickListener {
             val switchActivityIntent = Intent(this, RegisterActivity::class.java)
             startActivity(switchActivityIntent)
-        }
+        }}
 
-    private fun makeRequest()
+     fun makeRequest()
     {
 
         val api = Retrofit.Builder()
@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity() {
                     call: Call<responseLogin>,
                     response: Response<responseLogin>
                 ) {
-                    Log.d("##", "${response.body()?.token}")
-                    code=response.code().toString()
-                }
+                    Log.d("##", "${response.body()?.access_token}")
+                    Log.d("##", "${response.code().toString()}")                }
 
                 override fun onFailure(call: Call<responseLogin>, t: Throwable) {
                     Toast.makeText(this@MainActivity,"can't login", Toast.LENGTH_LONG).show()
@@ -74,5 +73,5 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-    }
-}
+
+}}
