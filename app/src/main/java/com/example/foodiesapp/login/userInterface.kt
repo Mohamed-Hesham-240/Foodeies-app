@@ -8,7 +8,6 @@ interface userInterface {
     @POST("auth/register")
     fun register(@Body request:User): Call<ResponseModel>?
 
-   // @Headers({ "Content-Type: application/json;charset=UTF-8"})
 
     @FormUrlEncoded
     @POST("auth/login")

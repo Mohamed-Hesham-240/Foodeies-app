@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
  }
 
 
-    private fun makeRequest()
+     fun makeRequest()
     {
 
         val api = Retrofit.Builder()
@@ -56,7 +56,7 @@ class RegisterActivity : AppCompatActivity() {
                     call: Call<ResponseModel>,
                     response: Response<ResponseModel>
                 ) {
-                    Toast.makeText(this@RegisterActivity,"Register done !", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RegisterActivity,"please login" ,Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
