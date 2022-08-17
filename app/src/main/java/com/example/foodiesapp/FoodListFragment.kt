@@ -1,14 +1,24 @@
 package com.example.foodiesapp
 
+import Product
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodiesapp.login.userInterface
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,7 +53,7 @@ class FoodListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_food_list, container, false)
         //
-        products = fitchProductsList()
+        //products = fitchProductsList()
         imageList = createImageList(products)
         //
         val layoutManager = LinearLayoutManager(context)
@@ -86,21 +96,35 @@ class FoodListFragment : Fragment() {
             }
     }
 
-    private fun fitchProductsList(): ArrayList<Product>{
-        //get it from the database
-        val img1 : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.dish1)
-        val img2 : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.dish3)
-        return arrayListOf(
-            Product(0,"asfafg  nvosindpvnsnsdvsdbsdb",1.0,img1, "abc", false,0),
-            Product(1,"b",2.0, img2,"sdf",false,0),
-            Product(2,"c",3.0,img1,"sdg",false,0),
-            Product(3,"d",4.0,img2,"gfj",false,0),
-            Product(4,"e",5.0,img1,"dfh", false,0),
-            Product(5,"f",6.0,img2,"fgn", false,0),
-            Product(6,"g",7.0,img1,"fhmt", false,0)
-        )
-    }
+    //private fun fitchProductsList(): ArrayList<Product>{}
+    private fun makeRequest()
+    {
 
+        val api = Retrofit.Builder()
+            .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(userInterface::class.java)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                val response = api.getallProducts(MainActivity.token)
+
+                for (product in response.products) {
+                    Log.d("MainActivity", "Result + $product")
+                   // addToList(article.title, article.description, article.image, article.url)
+                }
+
+                withContext(Dispatchers.Main) {
+                   // setUpRecyclerView()
+                }
+            } catch (e: Exception) {
+                Log.d("MainActivity", e.toString())
+
+            }
+        }
+
+    }
+   // private fun addToList(product :Product) {}
     private fun createImageList(products: ArrayList<Product>): ArrayList<Bitmap>{
         val images: ArrayList<Bitmap> = ArrayList(0)
         for (product in products){

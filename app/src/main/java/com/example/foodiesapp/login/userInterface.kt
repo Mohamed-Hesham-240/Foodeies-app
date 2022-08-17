@@ -1,5 +1,6 @@
 package com.example.foodiesapp.login
 
+import com.example.foodiesapp.Products
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,8 +14,8 @@ interface userInterface {
     @POST("auth/login")
     fun login(@Field("email")mail:String ,@Field("password")pass:String): Call<responseLogin>?
 
-    @GET("")
-    suspend fun getallUsers():   AllUsers
+    @GET("browse/getAllItems")
+    suspend fun getallProducts(@Header("Authorization")access_token :String): Products
 }
 
 
