@@ -4,7 +4,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.foodiesapp.cart.Cart
@@ -16,18 +18,31 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-
+    var email: EditText?=null
+    var pass: EditText?=null
+    lateinit  var code :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupActivityLink()
-
+        email= findViewById<EditText>(R.id.et_email)
+        pass= findViewById<EditText>(R.id.et_password)
         val btnLogin = findViewById<Button>(R.id.btn_login)
-makeRequest()
         //go to cart activity
         btnLogin.setOnClickListener {
-            val intent = Intent(this,Cart::class.java)
-            startActivity(intent)
+            makeRequest()
+            Log.d("f#","${code}")
+            if (code=="200")
+            {
+                val intent = Intent(this, Cart::class.java)
+                startActivity(intent)
+            }
+            else  {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                Log.d("f#","${code}")
+            }
+
         }
     }
 
@@ -43,20 +58,22 @@ makeRequest()
 
     private fun makeRequest()
     {
+
         val api = Retrofit.Builder()
-            .baseUrl("https://course-product-gallery.herokuapp.com")
+            .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(userInterface::class.java)
 
-        val requestModel = User("bye", "hello123","123")
+        val requestModel = userRequset( email?.text.toString(),pass?.text.toString())
 
-        api.login(requestModel)?.enqueue(
+        api.login( email?.text.toString(),pass?.text.toString())?.enqueue(
             object : Callback<responseLogin> {
                 override fun onResponse(
                     call: Call<responseLogin>,
                     response: Response<responseLogin>
                 ) {
-                    Toast.makeText(this@MainActivity,"login done !", Toast.LENGTH_LONG).show()
+                    Log.d("##", "${response.body()?.token}")
+                    code=response.code().toString()
                 }
 
                 override fun onFailure(call: Call<responseLogin>, t: Throwable) {

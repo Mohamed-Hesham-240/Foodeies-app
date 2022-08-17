@@ -1,12 +1,16 @@
 package com.example.foodiesapp.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import com.example.foodiesapp.MainActivity
 import com.example.foodiesapp.R
+import com.example.foodiesapp.cart.Cart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,12 +22,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RegisterActivity : AppCompatActivity() {
+    var username:EditText?=null
+    var email:EditText?=null
+    var pass:EditText?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
+         username= findViewById<EditText>(R.id.et_name)
+         email= findViewById<EditText>(R.id.et_email)
+        pass= findViewById<EditText>(R.id.et_password)
 
         val btnRegister= findViewById<Button>(R.id.btn_save)
-        makeRequest()
+        btnRegister.setOnClickListener {
+            makeRequest()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
  }
 
 
@@ -31,18 +45,17 @@ class RegisterActivity : AppCompatActivity() {
     {
 
         val api = Retrofit.Builder()
-            .baseUrl("https://course-product-gallery.herokuapp.com")
+            .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(userInterface::class.java)
 
-        val requestModel = User("usernameiii123", "hellkko123","12ioi3")
-        Log.d("##","hellooooo")
+        val requestModel = User(username?.text.toString(),  email?.text.toString(),pass?.text.toString())
         api.register(requestModel)?.enqueue(
             object : Callback<ResponseModel> {
                 override fun onResponse(
                     call: Call<ResponseModel>,
                     response: Response<ResponseModel>
-                ) {         Log.d("##","respone")
+                ) {
                     Toast.makeText(this@RegisterActivity,"Register done !", Toast.LENGTH_LONG).show()
                 }
 

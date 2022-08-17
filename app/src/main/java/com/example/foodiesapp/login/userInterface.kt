@@ -1,16 +1,18 @@
 package com.example.foodiesapp.login
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface userInterface {
-    @POST("/api/auth/signup")
+
+    @POST("auth/register")
     fun register(@Body request:User): Call<ResponseModel>?
 
-    @POST("/api/auth/signin")
-    fun login(@Body request:User): Call<responseLogin>?
+   // @Headers({ "Content-Type: application/json;charset=UTF-8"})
+
+    @FormUrlEncoded
+    @POST("auth/login")
+    fun login(@Field("email")mail:String ,@Field("password")pass:String): Call<responseLogin>?
 
     @GET("")
     suspend fun getallUsers():   AllUsers

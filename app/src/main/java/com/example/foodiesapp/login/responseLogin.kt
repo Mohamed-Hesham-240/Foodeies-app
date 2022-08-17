@@ -1,6 +1,5 @@
 package com.example.foodiesapp.login
 
-data class responseLogin( val name: String,
-                          val email: String,
-                          val token: String,
+data class responseLogin(
+                          val access_token: String,
                           )
