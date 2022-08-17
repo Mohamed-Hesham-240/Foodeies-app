@@ -3,6 +3,7 @@ package com.example.foodiesapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -21,12 +22,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var respCode: String
     var email: EditText? = null
     var pass: EditText? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupActivityLink()
@@ -34,11 +34,10 @@ class MainActivity : AppCompatActivity() {
         pass = findViewById<EditText>(R.id.et_password)
         val btnLogin = findViewById<Button>(R.id.btn_login)
         //go to cart activity
+
+
         btnLogin.setOnClickListener {
             makeRequest()
-            val intent = Intent(this, ProductsActivity::class.java)
-            startActivity(intent)
-
 
         }
     }
@@ -67,10 +66,23 @@ class MainActivity : AppCompatActivity() {
                     call: Call<responseLogin>,
                     response: Response<responseLogin>
                 ) {
-                    val respBody: String = response.body()?.access_token.toString()
-                    respCode = response.code().toString()
-                    Log.d("##", respBody)
-                    Log.d("##", respCode)
+                //  response.body()?.access_token.toString()
+                  //  Log.d("##", respCode)
+                    if (response.code().toString()=="200")
+                    {
+                        val intent = Intent(this@MainActivity, ProductsActivity::class.java)
+                        startActivity(intent)
+                        Toast.makeText(this@MainActivity, "logged in successfully !", Toast.LENGTH_LONG).show()
+
+                    }
+
+                    else
+                    {
+                        val intent = Intent(this@MainActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        Toast.makeText(this@MainActivity, "something went wrong!", Toast.LENGTH_LONG).show()
+
+                    }
 
                 }
 
@@ -81,6 +93,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        Log.d("##", respCode)
+       // Log.d("##", respCode)
     }
 }
