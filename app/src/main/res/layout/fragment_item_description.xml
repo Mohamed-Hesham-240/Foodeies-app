@@ -22,9 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/dish_name_from_description"
         app:layout_constraintTop_toBottomOf="@id/dish_image_from_description"
         tools:text="20" />
@@ -34,46 +34,93 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/black"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/dish_price_from_description"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dish_image_from_description"
         tools:text="Pasta" />
 
-    <TextView
-        android:id="@+id/dish_description"
+    <LinearLayout
+        android:id="@+id/order_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dish_name_from_description">
+
+        <TextView
+            android:id="@+id/minus_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/minus"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/quantity_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/zero"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/add_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/dish_description_scroll_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:singleLine="false"
-        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/add_to_cart_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dish_price_from_description"
-        tools:text="This is a dummy description of item #1 that is used to represent some food item" />
+        app:layout_constraintTop_toBottomOf="@id/order_layout">
 
-    <androidx.appcompat.widget.AppCompatButton
+        <TextView
+            android:id="@+id/dish_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:textSize="16sp"
+            tools:text="This is a dummy description of item #1 that is used to represent some food item" />
+    </ScrollView>
+
+    <Button
         android:id="@+id/add_to_cart_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Add to cart"
-        android:textSize="24sp"
+        android:fontFamily="@font/rounded"
+        android:text="@string/add_to_cart"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/go_to_cart_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dish_description" />
+        app:layout_constraintTop_toBottomOf="@+id/dish_description_scroll_view" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/go_to_cart_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="go to cart"
-        android:textSize="24sp"
+        android:fontFamily="@font/rounded"
+        android:text="@string/go_to_cart"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/add_to_cart_btn"
-        app:layout_constraintTop_toBottomOf="@+id/dish_description" />
+        app:layout_constraintTop_toBottomOf="@+id/dish_description_scroll_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

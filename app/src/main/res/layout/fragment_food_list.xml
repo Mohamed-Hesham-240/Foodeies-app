@@ -7,10 +7,9 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        tools:listitem="@layout/food_list_item"
-        android:layout_height="match_parent"
         android:id="@+id/food_list_rv"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/food_list_item" />
 
 </FrameLayout>

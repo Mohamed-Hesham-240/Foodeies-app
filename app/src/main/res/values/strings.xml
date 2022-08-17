@@ -6,10 +6,15 @@
     <string name="price">price</string>
     <string name="name">name</string>
     <string name="check_out">checkout</string>
+    <string name="go_to_cart">go to cart</string>
+    <string name="add_to_cart">add to cart</string>
     <string name="register">Register</string>
     <string name="user_name_hint">user name</string>
     <string name="hint_email">email</string>
     <string name="group_number">group 5</string>
+    <string name="add">+</string>
+    <string name="minus">-</string>
+    <string name="zero">0</string>
     <string name="created_by_string">Created By</string>
     <string name="check_for_account">Do not have an account?</string>
 </resources>
