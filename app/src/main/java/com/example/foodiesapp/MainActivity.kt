@@ -1,8 +1,12 @@
 package com.example.foodiesapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.media.RouteDiscoveryPreference
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Button
@@ -21,12 +25,25 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
+
+
+
+    private fun getToken():String{
+        val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        return sharedPreferences.getString("token", "-1").toString()
+    }
+
+    companion object{
+        lateinit var token:String
+    }
 
     var email: EditText? = null
     var pass: EditText? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupActivityLink()
@@ -38,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
             makeRequest()
-
+            token = getToken()
         }
     }
 
@@ -66,21 +83,27 @@ class MainActivity : AppCompatActivity() {
                     call: Call<responseLogin>,
                     response: Response<responseLogin>
                 ) {
-                //  response.body()?.access_token.toString()
-                  //  Log.d("##", respCode)
-                    if (response.code().toString()=="200")
-                    {
+                    sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+                    editor = sharedPreferences.edit()
+                    editor.putString("token", response.body()?.access_token.toString()).commit()
+                    //  Log.d("##", respCode)
+                    if (response.code().toString() == "200") {
                         val intent = Intent(this@MainActivity, ProductsActivity::class.java)
                         startActivity(intent)
-                        Toast.makeText(this@MainActivity, "logged in successfully !", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "logged in successfully !",
+                            Toast.LENGTH_LONG
+                        ).show()
 
-                    }
-
-                    else
-                    {
+                    } else {
                         val intent = Intent(this@MainActivity, MainActivity::class.java)
                         startActivity(intent)
-                        Toast.makeText(this@MainActivity, "something went wrong!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "something went wrong!",
+                            Toast.LENGTH_LONG
+                        ).show()
 
                     }
 
@@ -93,6 +116,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-       // Log.d("##", respCode)
+        // Log.d("##", respCode)
     }
 }
