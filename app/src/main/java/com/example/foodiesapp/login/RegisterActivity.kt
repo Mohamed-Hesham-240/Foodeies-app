@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.foodiesapp.MainActivity
 import com.example.foodiesapp.R
 import com.example.foodiesapp.cart.Cart
+import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -45,23 +46,24 @@ class RegisterActivity : AppCompatActivity() {
     {
 
         val api = Retrofit.Builder()
-            .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
+            .baseUrl("https://course-product-gallery.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(userInterface::class.java)
 
-        val requestModel = User(username?.text.toString(),  email?.text.toString(),pass?.text.toString())
+        val requestModel = User(username?.text.toString(),pass?.text.toString(),  email?.text.toString())
         api.register(requestModel)?.enqueue(
             object : Callback<ResponseModel> {
                 override fun onResponse(
                     call: Call<ResponseModel>,
                     response: Response<ResponseModel>
                 ) {
-                    Toast.makeText(this@RegisterActivity,"please login" ,Toast.LENGTH_LONG).show()
+
+                    Toast.makeText(this@RegisterActivity,"Register done !", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
                     Log.d("##","failure")
-                    Toast.makeText(this@RegisterActivity,"can't register", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RegisterActivity,t.toString(), Toast.LENGTH_LONG).show()
                 }
 
             }

@@ -71,13 +71,13 @@ class MainActivity : AppCompatActivity() {
     fun makeRequest() {
 
         val api = Retrofit.Builder()
-            .baseUrl("https://murmuring-temple-54993.herokuapp.com/")
+            .baseUrl("https://course-product-gallery.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(userInterface::class.java)
 
         val requestModel = userRequset(email?.text.toString(), pass?.text.toString())
 
-        api.login(email?.text.toString(), pass?.text.toString())?.enqueue(
+        api.login(requestModel)?.enqueue(
             object : Callback<responseLogin> {
                 override fun onResponse(
                     call: Call<responseLogin>,
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     sharedPreferences = getPreferences(Context.MODE_PRIVATE)
                     editor = sharedPreferences.edit()
                     editor.putString("token", response.body()?.access_token.toString()).commit()
-                    //  Log.d("##", respCode)
+                     Log.d("##",response.code().toString())
                     if (response.code().toString() == "200") {
                         val intent = Intent(this@MainActivity, ProductsActivity::class.java)
                         startActivity(intent)

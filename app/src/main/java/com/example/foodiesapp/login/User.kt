@@ -1,9 +1,10 @@
 package com.example.foodiesapp.login
 
 data class User(
-    val   username: String,
-    val email: String,
+    val userName: String,
     val password: String,
+    val email: String,
+
 
 
 )
