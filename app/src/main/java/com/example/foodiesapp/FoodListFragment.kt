@@ -91,13 +91,20 @@ class FoodListFragment : Fragment() {
         val img1 : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.dish1)
         val img2 : Bitmap = BitmapFactory.decodeResource(resources, R.drawable.dish3)
         return arrayListOf(
-            Product(0,"asfafg  nvosindpvnsnsdvsdbsdb",1.0,img1, "abc", false,0),
-            Product(1,"b",2.0, img2,"sdf",false,0),
-            Product(2,"c",3.0,img1,"sdg",false,0),
-            Product(3,"d",4.0,img2,"gfj",false,0),
-            Product(4,"e",5.0,img1,"dfh", false,0),
-            Product(5,"f",6.0,img2,"fgn", false,0),
-            Product(6,"g",7.0,img1,"fhmt", false,0)
+            Product(0,"Grilled Chicken Caesar",300.0, img2,"Enjoy the grilled steak taste with your favorite sauce:\\n\" +\n" +
+                    "                    \"Mushroom Sauce,  white, Mushroom, Curry, Dipsy, Pepper,\\n\" +\n" +
+                    "                    \"Mustard, Roquefort, Italian BBQ, Rosemary mustard, Basil, Lemon, Garlic & Spinach.",false,0),
+            Product(1,"Beef Grilled   ",200.0,img1, "Enjoy the grilled steak taste with your favorite sauce:\n" +
+                    "Mushroom Sauce,  white, Mushroom, Curry, Dipsy, Pepper,\n" +
+                    "Mustard, Roquefort, Italian BBQ, Rosemary mustard, Basil, Lemon, Garlic & Spinach.", false,0),
+
+            Product(2,"Grilled Chicken Caesar",260.0,img1,"served with your choice of sauce",false,0),
+            Product(3,"Hickory Smoked Chicken",290.0,img2,"served with your choice of sauce",false,0),
+            Product(4,"Grilled Italian Chicken\n",500.0,img1,"Enjoy the grilled steak taste with your favorite sauce:\\n\" +\n" +
+                    "                    \"Mushroom Sauce,  white, Mushroom, Curry, Dipsy, Pepper,\\n", false,0),
+            Product(5,"Streak",800.0,img2,"Grilled Chicken Arugula Salad\n", false,0),
+            Product(6,"grilled",900.0,img1,"Enjoy the grilled steak taste with your favorite sauce:\\n\" +\n" +
+                    "                    \"Mushroom Sauce,  white, Mushroom, Curry, Dipsy, Pepper,\\n", false,0)
         )
     }
 

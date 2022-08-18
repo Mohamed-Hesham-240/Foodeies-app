@@ -21,23 +21,26 @@
         android:id="@+id/dish_price_from_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:textColor="@color/black"
         android:textSize="24sp"
+        android:layout_marginRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dish_name_from_description"
         app:layout_constraintTop_toBottomOf="@id/dish_image_from_description"
-        tools:text="20" />
+        tools:text="200" />
 
     <TextView
         android:id="@+id/dish_name_from_description"
         android:singleLine="false"
         android:layout_width="130dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="@color/orange"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/dish_price_from_description"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="@string/minus"
-            android:textColor="@color/black"
+            android:textColor="@color/orange"
             android:textSize="32sp" />
 
         <TextView
@@ -78,15 +81,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add"
-            android:textColor="@color/black"
+            android:textColor="@color/orange"
             android:textSize="32sp" />
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/dish_description_scroll_view"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/add_to_cart_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/order_layout">
@@ -101,22 +104,26 @@
     </ScrollView>
 
     <Button
+        android:layout_marginTop="8dp"
         android:id="@+id/add_to_cart_btn"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:fontFamily="@font/rounded"
         android:text="@string/add_to_cart"
         android:textSize="18sp"
+        android:background="@drawable/roundedbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/go_to_cart_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dish_description_scroll_view" />
 
     <Button
+        android:layout_marginTop="8dp"
         android:id="@+id/go_to_cart_btn"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:fontFamily="@font/rounded"
+        android:background="@drawable/roundedbutton"
         android:text="@string/go_to_cart"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

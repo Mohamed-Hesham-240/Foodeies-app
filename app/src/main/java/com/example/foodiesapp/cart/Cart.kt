@@ -5,7 +5,9 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodiesapp.Product
@@ -15,6 +17,7 @@ import com.example.foodiesapp.R
 class Cart : AppCompatActivity() {
     lateinit var totalTextView: TextView
     lateinit var cartProducts : ArrayList<Product>
+    lateinit var checkoutBtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
@@ -32,6 +35,14 @@ class Cart : AppCompatActivity() {
         cartList.layoutManager = layoutManager
         totalTextView = findViewById(R.id.Total)
         totalTextView.text = "" + calcTotal()
+        checkoutBtn = findViewById(R.id.btn_checkout)
+        checkoutBtn.setOnClickListener {
+            Toast.makeText(
+                this@Cart,
+                "You have been charged with ${totalTextView.text}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
     }
 
